@@ -15,16 +15,24 @@
 </head>
 <body>
 
-
      <!-- Header & Navigation -->
       <header class="navbar">
         <div class="nav-container">
             <a href="#" class="logo">LM</a>
-            <nav class="nav-menu">
+            
+            <!-- AJOUT DE L'ID id="navMenu" POUR LE FICHIER MAIN.JS -->
+            <nav class="nav-menu" id="navMenu">
                 <a href="#home" class="nav-link active">Accueil</a>
                 <a href="#about" class="nav-link">À propos</a>
                 <a href="#contact" class="nav-link btn-nav">Me contacter</a>
             </nav>
+
+            <!-- AJOUT DU BOUTON BURGER INDISPENSABLE SUR SMARTPHONE -->
+            <button class="burger-menu" id="burgerBtn" aria-label="Ouvrir le menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
       </header>
 
@@ -49,6 +57,8 @@
                 </div>
             </div>
         </section>
+
+        <!-- Section À propos -->
         <section id="about" class="about-section">
             <div class="section-container">
                 <div class="section-header">
@@ -118,9 +128,6 @@
 
           <!-- Script JavaScript -->
            <script src="main.js"></script>
-
-
-
 
  </body>
 </html>
