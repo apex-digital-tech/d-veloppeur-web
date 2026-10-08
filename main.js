@@ -1,18 +1,41 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 1. CORRIGÉ : ID synchronisé avec la majuscule du HTML ('Whatsapp-form')
-    const whatsappForm = document.getElementById('Whatsapp-form');
+    // --- LOGIQUE DU MENU MOBILE (BURGER) ---
+    const burgerBtn = document.getElementById('burgerBtn');
+    const navMenu = document.getElementById('navMenu');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    if (burgerBtn && navMenu) {
+        // Ouvre et ferme le menu au clic sur le bouton burger
+        burgerBtn.addEventListener('click', () => {
+            burgerBtn.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Ferme automatiquement le menu mobile lorsqu'on clique sur un lien d'ancre
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                burgerBtn.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+    }
+
+
+    // --- FORMULAIRE D'ENVOI WHATSAPP ---
+    // CORRIGÉ : ID synchronisé en minuscules pour correspondre exactement au HTML ('whatsapp-form')
+    const whatsappForm = document.getElementById('whatsapp-form');
 
     if (whatsappForm) {
          whatsappForm.addEventListener('submit', function(e){
             e.preventDefault(); // Empêche le rechargement de la page
 
-            // 2. CORRIGÉ : getElementById utilisé pour récupérer le nom
+            // Récupération des données du formulaire
             const name = document.getElementById('name').value.trim();
-            const projectType = document.getElementById('project-type').value; // CORRIGÉ : casse harmonisée
+            const projectType = document.getElementById('project-type').value; 
             const message = document.getElementById('message').value.trim();
 
-            // 3. CORRIGÉ : Suppression du 0 bloquant après l'indicatif pays
+            // Numéro de téléphone au format international (sans + ni 0 initial)
             const phoneNumber = "212615416192";
 
             // Construction du message textuel
@@ -21,10 +44,10 @@ document.addEventListener('DOMContentLoaded', () => {
                              `*Type de projet :* ${projectType}\n\n` +
                              `*Message :*\n${message}`;
                              
-            // 4. CORRIGÉ : Orthographe de la fonction d'encodage
+            // Encodage propre des caractères spéciaux pour l'URL
             const encodedText = encodeURIComponent(baseText);
            
-            // 5. CORRIGÉ : Syntaxe de l'URL WhatsApp avec le slash / et le symbole \$
+            // CORRIGÉ : Syntaxe de l'URL template littérale réparée (ajout de / et de \$)
             const whatsappUrl = `https://wa.me{phoneNumber}?text=${encodedText}`;
 
             // Redirection propre dans un nouvel onglet
@@ -32,21 +55,19 @@ document.addEventListener('DOMContentLoaded', () => {
          });
     }
 
-    // --- LOGIQUE DE NAVIGATION AU SCROLL ---
-    // 6. CORRIGÉ : Sélection des balises 'section' existantes
+
+    // --- LOGIQUE DE NAVIGATION AU SCROLL (ACTIVE LINKS) ---
     const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('.nav-link');
 
     window.addEventListener('scroll', () => {
         let current = '';
-        // 7. CORRIGÉ : Propriété globale sécurisée pour récupérer le scroll
         const scrollPosition = window.scrollY || window.pageYOffset;
 
         sections.forEach(section => {
-            // 8. CORRIGÉ : Propriétés de position et de hauteur valides
             const sectionTop = section.offsetTop;
             const sectionHeight = section.clientHeight;
             
+            // Évalue quelle section est actuellement visible à l'écran
             if (scrollPosition >= (sectionTop - sectionHeight / 3)) {
                 current = section.getAttribute('id');
             }
@@ -54,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         navLinks.forEach(link => {
             link.classList.remove('active');
-            // CORRIGÉ : Vérification stricte pour éviter l'allumage simultané des liens
+            // Vérification pour attribuer la classe active au bon lien de navigation
             if (link.getAttribute('href') === `#${current}`) {
                 link.classList.add('active');
             }
