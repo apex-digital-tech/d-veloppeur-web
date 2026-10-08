@@ -88,6 +88,27 @@ body {
   background: rgba(255, 255, 255, 0.1);
 }
 
+/* --- LE BOUTON BURGER (Masqué sur ordinateur) --- */
+.burger-menu {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 1100;
+  padding: 0.5rem;
+}
+
+.burger-menu span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: var(--text-primary);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
 /* --- HERO SECTION --- */
 .hero-section {
   min-height: 100vh;
@@ -126,7 +147,7 @@ body {
 
 .profile-avatar:hover {
   transform: scale(1.05);
-  border-color: #ffffff; /* CORRIGÉ : ajout du dièse # */
+  border-color: #ffffff;
   box-shadow: 0 15px 30px rgba(99, 102, 241, 0.4);
 }
 
@@ -164,7 +185,7 @@ body {
   font-size: 1.15rem;
   max-width: 600px;
   margin: 0 auto 2.5rem auto;
-} /* CORRIGÉ : doublon supprimé */
+}
 
 .tech-stack {
   display: flex;
@@ -301,7 +322,7 @@ body {
 }
 
 .form-group {
-  margin-bottom: 1.5rem; /* CORRIGÉ : gère proprement les espacements verticaux */
+  margin-bottom: 1.5rem;
 }
 
 .form-group label {
@@ -355,12 +376,72 @@ body {
   box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
 }
 
-/* --- RESPONSIVE DESIGN (MEDIA QUERIES) --- */
+/* --- RESPONSIVE DESIGN COMPLET (MEDIA QUERIES) --- */
 @media (max-width: 768px) {
-  .nav-menu {
-    display: none;
+  /* On affiche le bouton burger sur mobile */
+  .burger-menu {
+    display: flex;
   }
 
+  /* Transformation du menu horizontal en volet mobile coulissant */
+  .nav-menu {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: -100%; /* Cache initialement le volet hors de l'écran à droite */
+    width: 290px;
+    height: 100vh;
+    background: rgba(11, 15, 25, 0.96);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 7rem 2rem 2rem 2rem;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 1.75rem;
+    border-left: 1px solid var(--card-border);
+    transition: var(--transition);
+  }
+
+  /* Classe ajoutée dynamiquement par le JS pour faire apparaître le menu */
+  .nav-menu.active {
+    right: 0;
+  }
+
+  .nav-link {
+    font-size: 1.1rem;
+    width: 100%;
+    padding: 0.5rem 0;
+  }
+
+  /* Style spécial pour adapter le bouton "Me contacter" dans la liste verticale */
+  .btn-nav {
+    background: var(--primary-color);
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    margin-top: 1rem;
+  }
+
+  .btn-nav:hover {
+    background: var(--primary-hover);
+  }
+
+  /* --- ANIMATIONS DU BOUTON BURGER (TRANSFORMATION EN "X") --- */
+  .burger-menu.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+
+  .burger-menu.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .burger-menu.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+
+  /* --- TYPOGRAPHIES ET ESPACEMENTS HERO --- */
   .hero-content h1 {
     font-size: 2.5rem;
   }
@@ -369,8 +450,19 @@ body {
     font-size: 1.4rem;
   }
 
+  /* --- LARGEUR DES BOUTONS HERO --- */
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  /* --- AJUSTEMENT DES EN-TÊTES DE SECTIONS --- */
+  .section-header h2 {
+    font-size: 1.85rem;
+  }
+
+  /* --- RESPONSIVE DES CARTES --- */
   .contact-card,
   .about-card {
-    padding: 1.5rem; /* CORRIGÉ : sélecteur réparé avec un point pour la classe */
+    padding: 1.5rem;
   }
 }
