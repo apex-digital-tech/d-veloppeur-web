@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOUMOUAMOU MPAKOU | Développeur Front-End</title>
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <!-- Google Fonts (Corrigé avec les sous-domaines fonts) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+
+     <!-- Header & Navigation -->
+      <header class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">LM</a>
+            <nav class="nav-menu">
+                <a href="#home" class="nav-link active">Accueil</a>
+                <a href="#about" class="nav-link">À propos</a>
+                <a href="#contact" class="nav-link btn-nav">Me contacter</a>
+            </nav>
+        </div>
+      </header>
+
+       <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <!-- Emplacement de votre photo de profil -->
+                 <div class="profil-avatar-container">
+                    <img src="makao1.png" alt="LOUMOUAMOU MPAKOU" class="profile-avatar">
+                 </div>
+                <span class="badge">Disponible pour de nouveaux projets</span>
+                <h1>LOUMOUAMOU MPAKOU</h1>
+                <h2>Développeur Web Front-End</h2>
+                <p class="hero-description">Je conçois et développe des interfaces web modernes, épurées, hautement performantes et centrées sur l'expérience utilisateur.</p>
+                <div class="tech-stack">
+                    <span class="tech-item"><i class="fab fa-html5"></i> HTML5</span>
+                    <span class="tech-item"><i class="fab fa-css3-alt"></i> CSS3</span>
+                    <span class="tech-item"><i class="fab fa-js"></i> Javascript ES6+</span>
+                </div>
+                <div class="hero-actions">
+                    <a href="#contact" class="btn btn-primary">Discutons de votre projet</a>
+                </div>
+            </div>
+        </section>
+        <section id="about" class="about-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="subtitle">À propos</span>
+                    <h2>Qui suis-je ?</h2>
+                </div>
+                <div class="about-card">
+                    <p>Bonjour ! Je m'appelle LOUMOUAMOU MPAKOU. Développeur Web Front-End passionné, je transforme des maquettes et des idées créatives en interfaces web interactives, fluides et parfaitement adaptées à tous les écrans.</p>
+                    <p>Mon crédo : du code sémantique propre, des performances de haut niveau et une attention rigoureuse portée à l'expérience utilisateur (UX).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Contact -->
+         <section id="contact" class="contact-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="subtitle">Contact</span>
+                    <h2>Travaillons ensemble</h2>
+                    <p>Remplissez le formulaire ci-dessous pour m'envoyer directement un message sur Whatsapp.</p>
+                </div>
+
+                <div class="contact-card">
+                    <form id="whatsapp-form" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Votre Nom complet</label>
+                            <div class="input-wrapper">
+                                <i class="far fa-user input-icon"></i>
+                                <input type="text" id="name" placeholder="Ex: Jean Dupont" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="project-type">Type de projet</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-laptop-code input-icon"></i>
+                                <select id="project-type" required>
+                                    <option value="" disabled selected>Sélectionnez une option</option>
+                                    <option value="Site Vitrine">Site Vitrine</option>
+                                    <option value="Application Web">Application Web / Intégration JS</option>
+                                    <option value="Optimisation & Rénovation CSS">Optimisation & Rénovation CSS</option>
+                                    <option value="Autre">Autre projet</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Détail de votre message</label>
+                            <div class="input-wrapper">
+                                <i class="far fa-comment-alt input-icon textarea-icon"></i>
+                                <textarea id="message" rows="5" placeholder="Décrivez brièvement votre besoin..." required></textarea>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-whatsapp"> 
+                            <i class="fab fa-whatsapp"></i> Envoyer sur Whatsapp
+                        </button>
+                    </form>
+                </div>
+            </div>
+         </section>
+
+         <!-- Footer -->
+          <footer>
+            <p>&copy; 2026 LOUMOUAMOU MPAKOU. Tous droits réservés.</p>
+          </footer>
+
+          <!-- Script JavaScript -->
+           <script src="main.js"></script>
+
+
+
+
+ </body>
+</html>
